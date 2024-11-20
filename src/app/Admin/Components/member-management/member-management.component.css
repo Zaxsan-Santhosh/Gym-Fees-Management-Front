@@ -1,24 +1,106 @@
-.member-management {
-    padding: 20px;
+/* Container styling for centering and spacing */
+.container {
+  margin: 20px auto;
+  max-width: 900px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Header styling */
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Table styling */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Table header styling */
+.table thead {
+  background-color: #4caf50;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table thead th {
+  padding: 10px 15px;
+}
+
+/* Table body styling */
+.table tbody tr {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Cell padding and alignment */
+.table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+
+/* Action buttons */
+button {
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Edit button */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Delete button */
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
   }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
+
+  h2 {
+    font-size: 20px;
   }
-  
-  .table th,
-  .table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+
+  .table td, .table th {
+    font-size: 14px;
+    padding: 8px 10px;
   }
-  
-  .table th {
-    background-color: #f4f4f4;
+
+  button {
+    font-size: 12px;
+    padding: 5px 10px;
   }
-  
-  .btn {
-    margin-right: 5px;
-  }
-  
+}

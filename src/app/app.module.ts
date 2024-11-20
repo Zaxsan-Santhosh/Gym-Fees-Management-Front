@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterMemberComponent } from './Admin/Components/member-register/member-register/member-register.component';
 import { LandingPageComponent } from './Home/LandingPage/landing-page/landing-page.component';
 import { AboutUsComponent } from './Home/AboutUs/about-us/about-us.component';
+import { HomeLayoutComponent } from './Layouts/home-layout/home-layout/home-layout.component';
 
 
 
@@ -30,7 +31,8 @@ import { AboutUsComponent } from './Home/AboutUs/about-us/about-us.component';
     BlankLayoutComponent,
     RegisterMemberComponent,
     LandingPageComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    HomeLayoutComponent
 
 
 

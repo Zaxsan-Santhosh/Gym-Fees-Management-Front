@@ -1,96 +1,102 @@
-/* General container for the form */
+/* Container */
 .register-container {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Form elements */
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #444;
+}
+
+/* Form */
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
-/* Form Labels */
-label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
+/* Form Row */
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-section {
+  flex: 1;
+  position: relative;
 }
 
 /* Input Fields */
 input {
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
   font-size: 14px;
-  border-radius: 4px;
   border: 1px solid #ccc;
+  border-radius: 4px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  color: #444;
+  background: #f9f9f9;
 }
 
-/* Focus Effect */
+input::placeholder {
+  color: #e74c3c; /* Validation error color */
+  font-size: 13px;
+}
+
 input:focus {
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  background: #fff;
 }
 
-/* Input error styling */
-input.ng-touched.ng-invalid {
-  border: 1px solid #e74c3c;
+input.ng-valid {
+  border-color: #28a745;
 }
 
-input.ng-touched.ng-valid {
-  border: 1px solid #2ecc71;
+input.ng-invalid {
+  border-color: #e74c3c;
 }
 
-/* Error message styling */
-.alert {
-  color: #e74c3c;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-/* Submit button */
+/* Buttons */
 button {
-  padding: 12px 20px;
-  background-color: #007bff;
-  color: white;
+  padding: 12px;
   font-size: 16px;
   font-weight: bold;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-/* Hover Effect for Submit Button */
 button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(to right, #0056b3, #003f7f);
 }
 
-/* Disabled Submit Button */
 button:disabled {
-  background-color: #b0c4de;
+  background: #ccc;
   cursor: not-allowed;
 }
 
-/* Spacing between form sections */
-div {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+/* Red asterisk for mandatory fields */
+.required {
+  color: red;
+  font-size: 16px;
+  margin-left: 5px;
 }
 
-/* Add some margin to the top for better form spacing */
-.form-section {
-  margin-bottom: 15px;
-}
 
-/* Small margin between form inputs */
-input {
-  margin-bottom: 10px;
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
 }

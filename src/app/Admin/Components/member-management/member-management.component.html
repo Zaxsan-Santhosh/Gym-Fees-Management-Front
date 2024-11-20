@@ -1,29 +1,30 @@
 
-<div class="member-management">
-    <h2>Member Management</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let member of members; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ member.name }}</td>
-          <td>{{ member.email }}</td>
-          <td>{{ member.phone }}</td>
-          <td>
-            <button (click)="editMember(member)" class="btn btn-primary btn-sm">Edit</button>
-            <button (click)="deleteMember(member.id)" class="btn btn-danger btn-sm">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="container">
+  <h2>Members List</h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of members; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ member.name }}</td>
+        <td>{{ member.email }}</td>
+        <td>{{ member.role }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm me-2" (click)="editMember(member.id)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteMember(member.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
   
   

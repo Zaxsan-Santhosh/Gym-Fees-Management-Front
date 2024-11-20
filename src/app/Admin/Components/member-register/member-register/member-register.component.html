@@ -1,117 +1,113 @@
 <div class="register-container">
+  <h2>Member Registration</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
-    <!-- First Name Validation -->
-    <div class="form-section">
-      <label for="firstName">First Name</label>
-      <input id="firstName" type="text" formControlName="firstName" />
-      <div
-        class="alert"
-        *ngIf="
-          registerForm.get('firstName')?.invalid &&
-          (registerForm.get('firstName')?.dirty ||
-            registerForm.get('firstName')?.touched)
-        "
-      >
-        <small *ngIf="registerForm.get('firstName')?.errors?.['required']"
-          >First Name is required.</small
-        >
-        <small *ngIf="registerForm.get('firstName')?.errors?.['minlength']"
-          >First Name must be at least 4 characters long.</small
-        >
+    <div class="form-row">
+      <div class="form-section">
+        <label for="firstName">First Name <span class="required">*</span></label>
+        <input id="firstName" type="text" formControlName="firstName" />
+        <div class="alert" *ngIf="isFieldInvalid('firstName')">
+          <small *ngIf="registerForm.get('firstName')?.errors?.['required']">First Name is required.</small>
+          <small *ngIf="registerForm.get('firstName')?.errors?.['minlength']">Must be at least 4 characters long.</small>
+        </div>
+      </div>
+      <div class="form-section">
+        <label for="lastName">Last Name <span class="required">*</span></label>
+        <input id="lastName" type="text" formControlName="lastName" />
+        <div class="alert" *ngIf="isFieldInvalid('lastName')">
+          <small *ngIf="registerForm.get('lastName')?.errors?.['required']">Last Name is required.</small>
+          <small *ngIf="registerForm.get('lastName')?.errors?.['minlength']">Must be at least 4 characters long.</small>
+        </div>
       </div>
     </div>
 
-    <!-- Last Name Validation -->
-    <div class="form-section">
-      <label for="lastName">Last Name</label>
-      <input id="lastName" type="text" formControlName="lastName" />
-      <div
-        class="alert"
-        *ngIf="
-          registerForm.get('lastName')?.invalid &&
-          (registerForm.get('lastName')?.dirty ||
-            registerForm.get('lastName')?.touched)
-        "
-      >
-        <small *ngIf="registerForm.get('lastName')?.errors?.['required']"
-          >Last Name is required.</small
-        >
-        <small *ngIf="registerForm.get('lastName')?.errors?.['minlength']"
-          >Last Name must be at least 4 characters long.</small
-        >
+    <div class="form-row">
+      <div class="form-section">
+        <label for="email">Email <span class="required">*</span></label>
+        <input id="email" type="email" formControlName="email" />
+        <div class="alert" *ngIf="isFieldInvalid('email')">
+          <small *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</small>
+        </div>
+      </div>
+      <div class="form-section">
+        <label for="phoneNumber">Phone Number <span class="required">*</span></label>
+        <input id="phoneNumber" type="text" formControlName="phoneNumber" />
+        <div class="alert" *ngIf="isFieldInvalid('phoneNumber')">
+          <small *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">Phone number is required.</small>
+          <small *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">Must be 10 digits.</small>
+        </div>
       </div>
     </div>
 
-    <!-- Email Validation -->
-    <div class="form-section">
-      <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email" />
-      <div
-        class="alert"
-        *ngIf="
-          registerForm.get('email')?.invalid &&
-          (registerForm.get('email')?.dirty ||
-            registerForm.get('email')?.touched)
-        "
-      >
-        <small *ngIf="registerForm.get('email')?.errors?.['required']"
-          >Email is required.</small
-        >
-        <small *ngIf="registerForm.get('email')?.errors?.['email']"
-          >Invalid email format.</small
-        >
+    <div class="form-row">
+      <div class="form-section">
+        <label for="nic">NIC <span class="required">*</span></label>
+        <input id="nic" type="text" formControlName="nic" />
+        <div class="alert" *ngIf="isFieldInvalid('nic')">
+          <small *ngIf="registerForm.get('nic')?.errors?.['required']">NIC is required.</small>
+        </div>
+      </div>
+      <div class="form-section">
+        <label for="age">Age <span class="required">*</span></label>
+        <input id="age" type="number" formControlName="age" />
+        <div class="alert" *ngIf="isFieldInvalid('age')">
+          <small *ngIf="registerForm.get('age')?.errors?.['required']">Age is required.</small>
+        </div>
       </div>
     </div>
 
-    <!-- Phone Number Validation -->
-    <div class="form-section">
-      <label for="phoneNumber">Phone Number</label>
-      <input id="phoneNumber" type="text" formControlName="phoneNumber" />
-      <div
-        class="alert"
-        *ngIf="
-          registerForm.get('phoneNumber')?.invalid &&
-          (registerForm.get('phoneNumber')?.dirty ||
-            registerForm.get('phoneNumber')?.touched)
-        "
-      >
-        <small *ngIf="registerForm.get('phoneNumber')?.errors?.['required']"
-          >Phone number is required.</small
-        >
-        <small *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']"
-          >Phone number must be 10 digits.</small
-        >
+    <div class="form-row">
+      <div class="form-section">
+        <label for="gender">Gender</label>
+        <select id="gender" formControlName="gender">
+          <option value="" disabled>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-section">
+        <label for="userRole">User Role</label>
+        <select id="userRole" formControlName="userRole">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+          <option value="superadmin">Super Admin</option>
+        </select>
       </div>
     </div>
 
-    <!-- Password Validation -->
-    <div class="form-section">
-      <label for="password">Password</label>
-      <input id="password" type="password" formControlName="password" />
-      <div
-        class="alert"
-        *ngIf="
-          registerForm.get('password')?.invalid &&
-          (registerForm.get('password')?.dirty ||
-            registerForm.get('password')?.touched)
-        "
-      >
-        <small *ngIf="registerForm.get('password')?.errors?.['required']"
-          >Password is required.</small
-        >
-        <small *ngIf="registerForm.get('password')?.errors?.['minlength']"
-          >Password must be at least 8 characters long.</small
-        >
-        <small *ngIf="registerForm.get('password')?.errors?.['pattern']"
-          >Password must include uppercase, lowercase, number, and special
-          character.</small
-        >
+    <div class="form-row">
+      <div class="form-section">
+        <label for="height">Height (cm)</label>
+        <input id="height" type="number" formControlName="height" />
+      </div>
+      <div class="form-section">
+        <label for="weight">Weight (kg)</label>
+        <input id="weight" type="number" formControlName="weight" />
       </div>
     </div>
-    
+
+    <div class="form-row">
+      <div class="form-section">
+        <label for="creationDate">Creation Date</label>
+        <input id="creationDate" type="date" formControlName="creationDate" />
+      </div>
+      <div class="form-section">
+        <label for="profileImage">Profile Image</label>
+        <input id="profileImage" type="file" (change)="onFileSelect($event)" />
+      </div>
+    </div>
+
+    <div class="form-row full-width">
+      <div class="form-section">
+        <label for="address">Address</label>
+        <textarea id="address" formControlName="address" rows="3"></textarea>
+      </div>
+    </div>
 
     <!-- Submit Button -->
-    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <div class="form-row full-width">
+      <button type="submit" [disabled]="!registerForm.valid">Register</button>
+    </div>
   </form>
 </div>

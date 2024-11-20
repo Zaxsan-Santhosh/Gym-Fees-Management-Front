@@ -1,1 +1,13 @@
-<p>programs-managment works!</p>
+<div class="program-container">
+    <div class="program-card" *ngFor="let program of programs">
+      <h3>{{ program.name }}</h3>
+      <p><strong>Duration:</strong> {{ program.duration }}</p>
+      <p><strong>Level:</strong> {{ program.level }}</p>
+      <p><strong>Description:</strong> {{ program.description }}</p>
+      <div class="card-actions">
+        <button class="btn btn-primary" (click)="editProgram(program.id)">Edit</button>
+        <button class="btn btn-danger" (click)="deleteProgram(program.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+  

@@ -8,71 +8,63 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 })
 
   export class RegisterMemberComponent implements OnInit {
-    registerForm!: FormGroup;
+    registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+    constructor(private fb: FormBuilder) {
+      this.registerForm = this.fb.group({
+        firstName: ['', [Validators.required, Validators.minLength(4)]],
+        lastName: ['', [Validators.required, Validators.minLength(4)]],
+        email: ['', [Validators.required, Validators.email]],
+        phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+        password: [
+          '',
+          [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]
+        ],
+        nic: ['', Validators.required],
+        age: ['', Validators.required],
+        gender: ['', Validators.required],
+        height: [''],
+        weight: [''],
+        creationDate: [''],
+        address: [''],
+        profileImage: [null],
+        userRole: ['', Validators.required]
+        
+      });
 
-  ngOnInit(): void {
-    this.registerForm = this.fb.group({
-      firstName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(4),
-          this.forbiddenNameValidator('Bob') // Custom validator for forbidden name
-        ]
-      ],
-      lastName: ['', [Validators.required, Validators.minLength(4)]],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], // 10 digit phone number
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
-        ]
-      ]
-    });
-  }
-
-  get firstName() {
-    return this.registerForm.get('firstName');
-  }
-
-  get lastName() {
-    return this.registerForm.get('lastName');
-  }
-
-  get email() {
-    return this.registerForm.get('email');
-  }
-
-  get phoneNumber() {
-    return this.registerForm.get('phoneNumber');
-  }
-
-  get password() {
-    return this.registerForm.get('password');
-  }
-
-  // Custom validator for forbidden name
-  forbiddenNameValidator(name: string) {
-    return (control: any) => {
-      if (control.value === name) {
-        return { forbiddenName: true };
-      }
-      return null;
-    };
-  }
-
-  onSubmit(): void {
-    if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-      // Handle form submission
+      this.registerForm.statusChanges.subscribe(status => {
+        console.log('Form status:', status); // Should show 'VALID' or 'INVALID'
+      });
     }
-  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
   
+    onSubmit() {
+      if (this.registerForm.valid) {
+        console.log(this.registerForm.value);
+      }
+    }
+  
+    isFieldInvalid(field: string): boolean {
+      const control = this.registerForm.get(field);
+      return control ? control.invalid && (control.dirty || control.touched) : false;
+    }
+  
+    onFileSelect(event: Event) {
+      const file = (event.target as HTMLInputElement).files?.[0];
+      if (file) {
+        this.registerForm.patchValue({ profileImage: file });
+      }
+    }
 
+      clearErrorMessage(field: string): void {
+    const control = this.registerForm.get(field);
+    if (control?.dirty || control?.touched) {
+      control.markAsUntouched();
+    }
+  }
+  
+  
+  }
 

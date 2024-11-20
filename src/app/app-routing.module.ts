@@ -9,15 +9,16 @@ import { FeeManagementComponent } from './Admin/Components/fee-management/fee-ma
 import { ProgramsManagementComponent } from './Admin/Components/programs-managment/programs-managment.component';
 import { BlankLayoutComponent } from './Layouts/blank-layout/blank-layout.component';
 import { LandingPageComponent } from './Home/LandingPage/landing-page/landing-page.component';
+import { HomeLayoutComponent } from './Layouts/home-layout/home-layout/home-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent
+    component: LandingPageComponent, // Main landing page component
   },
   {
     path: 'login',
-    component: BlankLayoutComponent,
+    component: BlankLayoutComponent, // Blank layout for login page
     children: [
       {
         path: '',
@@ -31,7 +32,7 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: RegisterMemberComponent,
+        component: AdminDashboardComponent, // Consider renaming if this is for dashboard
       },
       {
         path: 'memberManagement',
@@ -39,7 +40,7 @@ const routes: Routes = [
       },
       {
         path: 'memberRegister',
-        component: RegisterMemberComponent,
+        component: RegisterMemberComponent, // If this is for member registration, consider creating a separate component
       },
       {
         path: 'feeManagement',
@@ -56,6 +57,8 @@ const routes: Routes = [
     redirectTo: '/login', // Wildcard redirects to Login
   },
 ];
+
+export default routes;
 
 
 @NgModule({
