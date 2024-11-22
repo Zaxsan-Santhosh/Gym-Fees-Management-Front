@@ -33,6 +33,15 @@ form {
   position: relative;
 }
 
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #555;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+}
+
+
 /* Input Fields */
 input {
   width: 100%;
@@ -91,6 +100,14 @@ button:disabled {
   color: red;
   font-size: 16px;
   margin-left: 5px;
+}
+
+input[type="file"] {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
 }
 
 

@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './programs-managment.component.css'
 })
 export class ProgramsManagementComponent {
-
+  searchText: string = ''; // For search functionality
   programs = [
     {
       id: 1,
@@ -31,15 +31,23 @@ export class ProgramsManagementComponent {
     },
   ];
 
+  // Method to edit a program
   editProgram(id: number) {
     alert(`Edit Program with ID: ${id}`);
     // Add your navigation or modal logic here
   }
 
+  // Method to delete a program
   deleteProgram(id: number) {
     const confirmed = confirm('Are you sure you want to delete this program?');
     if (confirmed) {
       this.programs = this.programs.filter((program) => program.id !== id);
     }
+  }
+
+  // Method to add a new program
+  addProgram() {
+    alert('Add a new program logic');
+    // Add your logic to add a program, like opening a modal or navigating to an add program page
   }
 }
