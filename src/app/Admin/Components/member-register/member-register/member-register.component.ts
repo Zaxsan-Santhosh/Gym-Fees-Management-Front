@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-member-register',
@@ -8,37 +8,34 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 })
 
   export class RegisterMemberComponent implements OnInit {
-    registerForm: FormGroup;
+    registerForm!: FormGroup;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder) {}
+
+    ngOnInit(): void {
+      this.initializeForm();
+    }
+  
+    initializeForm(): void {
       this.registerForm = this.fb.group({
         firstName: ['', [Validators.required, Validators.minLength(4)]],
         lastName: ['', [Validators.required, Validators.minLength(4)]],
         email: ['', [Validators.required, Validators.email]],
         phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-        password: [
-          '',
-          [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]
-        ],
+        password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]],
+        confirmPassword: ['', Validators.required],
         nic: ['', Validators.required],
         age: ['', Validators.required],
-        gender: ['', Validators.required],
-        height: [''],
-        weight: [''],
-        creationDate: [''],
+        gender: [''],
+        userRole: ['user'],
         address: [''],
-        profileImage: [null],
-        userRole: ['', Validators.required]
-        
-      });
-
-      this.registerForm.statusChanges.subscribe(status => {
-        console.log('Form status:', status); // Should show 'VALID' or 'INVALID'
-      });
+        profileImage: [null]
+      }, { validator: this.passwordMatchValidator });
+  
+      // Reset form state on initialization
+      this.registerForm.reset();
     }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  
   
     onSubmit() {
       if (this.registerForm.valid) {
@@ -63,6 +60,12 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
     if (control?.dirty || control?.touched) {
       control.markAsUntouched();
     }
+  }
+  
+  passwordMatchValidator(form: AbstractControl): ValidationErrors | null {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordMismatch: true };
   }
   
   

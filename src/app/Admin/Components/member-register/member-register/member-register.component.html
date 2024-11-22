@@ -1,6 +1,8 @@
 <div class="register-container">
   <h2>Member Registration</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- Personal Details Section -->
+    <h3>Personal Details</h3>
     <div class="form-row">
       <div class="form-section">
         <label for="firstName">First Name <span class="required">*</span></label>
@@ -41,6 +43,28 @@
 
     <div class="form-row">
       <div class="form-section">
+        <label for="password">Password <span class="required">*</span></label>
+        <input id="password" type="password" formControlName="password" />
+        <div class="alert" *ngIf="isFieldInvalid('password')">
+          <small *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</small>
+          <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Must be at least 6 characters long.</small>
+          <small *ngIf="registerForm.get('password')?.errors?.['pattern']">Must contain a number, an uppercase letter, and a special character.</small>
+        </div>
+      </div>
+      <div class="form-section">
+        <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+        <div class="alert" *ngIf="isFieldInvalid('confirmPassword')">
+          <small *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirmation is required.</small>
+          <small *ngIf="registerForm.hasError('passwordMismatch')">Passwords do not match.</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Details Section -->
+    <h3>Additional Details</h3>
+    <div class="form-row">
+      <div class="form-section">
         <label for="nic">NIC <span class="required">*</span></label>
         <input id="nic" type="text" formControlName="nic" />
         <div class="alert" *ngIf="isFieldInvalid('nic')">
@@ -78,27 +102,9 @@
 
     <div class="form-row">
       <div class="form-section">
-        <label for="height">Height (cm)</label>
-        <input id="height" type="number" formControlName="height" />
-      </div>
-      <div class="form-section">
-        <label for="weight">Weight (kg)</label>
-        <input id="weight" type="number" formControlName="weight" />
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-section">
-        <label for="creationDate">Creation Date</label>
-        <input id="creationDate" type="date" formControlName="creationDate" />
-      </div>
-      <div class="form-section">
         <label for="profileImage">Profile Image</label>
         <input id="profileImage" type="file" (change)="onFileSelect($event)" />
       </div>
-    </div>
-
-    <div class="form-row full-width">
       <div class="form-section">
         <label for="address">Address</label>
         <textarea id="address" formControlName="address" rows="3"></textarea>

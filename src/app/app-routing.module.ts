@@ -8,13 +8,12 @@ import { RegisterMemberComponent } from './Admin/Components/member-register/memb
 import { FeeManagementComponent } from './Admin/Components/fee-management/fee-management.component';
 import { ProgramsManagementComponent } from './Admin/Components/programs-managment/programs-managment.component';
 import { BlankLayoutComponent } from './Layouts/blank-layout/blank-layout.component';
-import { LandingPageComponent } from './Home/LandingPage/landing-page/landing-page.component';
-import { HomeLayoutComponent } from './Layouts/home-layout/home-layout/home-layout.component';
+import { LandingPageComponent } from './Home/landing-page/landing-page/landing-page.component';
+
 
 const routes: Routes = [
   {
-    path: '',
-    component: LandingPageComponent, // Main landing page component
+    path:'',component:LandingPageComponent //landing page to redirect first after run the project
   },
   {
     path: 'login',
@@ -40,7 +39,7 @@ const routes: Routes = [
       },
       {
         path: 'memberRegister',
-        component: RegisterMemberComponent, // If this is for member registration, consider creating a separate component
+        component: RegisterMemberComponent, 
       },
       {
         path: 'feeManagement',

@@ -11,11 +11,10 @@ import { AdminLoginComponent } from './Admin/Components/admin-login/admin-login.
 import { RouterOutlet } from '@angular/router';
 import { AdminLayoutComponent } from './Layouts/admin-layout/admin-layout.component';
 import { BlankLayoutComponent } from './Layouts/blank-layout/blank-layout.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterMemberComponent } from './Admin/Components/member-register/member-register/member-register.component';
-import { LandingPageComponent } from './Home/LandingPage/landing-page/landing-page.component';
-import { AboutUsComponent } from './Home/AboutUs/about-us/about-us.component';
-import { HomeLayoutComponent } from './Layouts/home-layout/home-layout/home-layout.component';
+import { LandingPageComponent } from './Home/landing-page/landing-page/landing-page.component';
+import { SearchFilterPipe } from './Pipes/search-filter.pipe';
 
 
 
@@ -31,8 +30,7 @@ import { HomeLayoutComponent } from './Layouts/home-layout/home-layout/home-layo
     BlankLayoutComponent,
     RegisterMemberComponent,
     LandingPageComponent,
-    AboutUsComponent,
-    HomeLayoutComponent
+    SearchFilterPipe
 
 
 
@@ -44,7 +42,9 @@ import { HomeLayoutComponent } from './Layouts/home-layout/home-layout/home-layo
     AppRoutingModule,
     RouterOutlet,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    
     
   ],
   providers: [],

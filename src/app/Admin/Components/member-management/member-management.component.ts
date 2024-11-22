@@ -7,14 +7,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './member-management.component.css'
 })
 export class MemberManagementComponent  {
-
-
-   // Sample data for members
-   members = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Editor' },
-    { id: 3, name: 'Tom Hardy', email: 'tom@example.com', role: 'Viewer' },
+  searchText: string = '';
+  members = [
+    {
+      id: 1,
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@example.com',
+      contactNumber: '1234567890',
+      nic: 'AB12345678',
+      age: 30,
+      gender: 'Male',
+      address: '123 Main Street, City',
+    },
+    {
+      id: 1,
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@example.com',
+      contactNumber: '1234567890',
+      nic: 'AB12345678',
+      age: 30,
+      gender: 'Male',
+      address: '123 Main Street, City',
+    },
+    {
+      id: 1,
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@example.com',
+      contactNumber: '1234567890',
+      nic: 'AB12345678',
+      age: 30,
+      gender: 'Male',
+      address: '123 Main Street, City',
+    },
+    // Add more member objects here
   ];
+  
+
 
   editMember(id: number) {
     alert(`Edit Member with ID: ${id}`);
